@@ -8,30 +8,38 @@ namespace Cola
         static void Main(string[] args)
         {
             Queue<string> queue = new Queue<string>();
+            string nombre = "";
+            string apellido = "";
 
-
-            Console.WriteLine("¿hola cual es tu nombre");
-            string nombre = Console.ReadLine();//puedo usar mucho texto
-            Console.WriteLine("¿" + nombre + "ingresa tu apellido?");
-            string cadena = Console.ReadLine();
-            Console.WriteLine("¿ cual es tu calle de donde vivis");
-            string direccion = Console.ReadLine();
-
-            while (nombre + cadena + direccion != "")
+            while (queue.Count > 3)
             {
-                queue.Enqueue(nombre + cadena + direccion);
+                Console.WriteLine("Ingrese su nombre");
+                nombre = Console.ReadLine();
+            
+                Console.WriteLine($"{nombre}, ingresa tu apellido");
+                apellido = Console.ReadLine();
 
-                Console.WriteLine("Ingresa otro dato");
+                while (nombre == "" || apellido == "")
+                {
 
-                Console.WriteLine("¿hola cual es tu nombre");
-                nombre = Console.ReadLine();//puedo usar mucho texto
+                    Console.WriteLine("Le ha faltado ingresar un dato.");
 
-                Console.WriteLine("¿" + nombre + "ingresa tu apellido?");
-                cadena = Console.ReadLine();
+                    if (nombre == "")
+                    {
+                        Console.WriteLine("Ingrese nuevamente su nombre");
+                        nombre = Console.ReadLine();
+                    }
 
-                Console.WriteLine("¿ cual es tu calle de donde vivis");
-                direccion = Console.ReadLine();
+                    if (apellido == "")
+                    {
+                        Console.WriteLine("Ingrese nuevamente su apellido");
+                        apellido = Console.ReadLine();
+                    }
+                }
+
             }
+
+            queue.Enqueue(nombre + " " + apellido);
 
             while (queue.Count > 0)
             {
@@ -40,21 +48,6 @@ namespace Cola
 
             Console.ReadKey();
 
-            /*string cadena;
-            Queue<string> colaStr = new Queue<string>();
-            Console.WriteLine("ingrese una cadena de texto");
-            cadena = Console.ReadLine();
-            while (cadena != "")
-            {
-                colaStr.Enqueue(cadena);
-                Console.WriteLine("ingrese una cadena de texto");
-                cadena=Console.ReadLine();  
-            }
-            while (colaStr.Count > 0)
-            {
-                Console.WriteLine(colaStr.Dequeue());
-            }
-            Console.ReadKey();*/
         }
     }
 }
