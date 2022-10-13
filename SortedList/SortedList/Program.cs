@@ -14,8 +14,8 @@ namespace SortedList
             SortedList<string, string> Diccionario = new SortedList<string, string>();
 
             Diccionario.Add("hello", "hola");
-            Diccionario.Add("good bye", "chau");
-            Diccionario.Add("I am ", "yo soy");
+            Diccionario.Add("good bye", "adios");
+            Diccionario.Add("I am", "yo soy");
             Diccionario.Add("beutiful", "hermoso");
             Diccionario.Add("farher", "padre");
             Diccionario.Add("brother", "hermano");
@@ -25,16 +25,15 @@ namespace SortedList
             Console.WriteLine("Ingresa una frase en ingles");
             frase = Console.ReadLine();
 
-            string[] arreglo = frase.Split();
-
-            for (int i = 0; i < arreglo.Length; i++)
+            if (Diccionario.ContainsKey(frase))
             {
-                Console.WriteLine(arreglo[i]);
+                Console.WriteLine($"La frase {frase}, se traduce como: {Diccionario[frase]}");
             }
-
-
-
-
+            else
+            {
+                Console.WriteLine($"No se ha encontrado la frase '{frase}' en el Diccionario");
+            }
+    
             //conbsola mantenga abierta
             Console.ReadKey();
         }
